@@ -50,10 +50,11 @@ internal class ShoppingCartTest {
     @Test
     fun `isValidProduct returns invalid for non existing product`() {
         val product = Product(
-            id = 6,
+            id = 6112,
             name = "Ice cream",
             price = 5.0
         )
-        cart.
+        cart.addProduct(product, 4)
+        assertThat(cart.getTotalCost()).isEqualTo(0.0)
     }
 }
