@@ -1,15 +1,17 @@
 package com.plcoding.testingcourse.shopping.domain
 
 
-class ShoppingCart {
+class ShoppingCart(
+    private val cache: ShoppingCartCache
+) {
     private val validProductIds = listOf(1, 2, 3, 4, 5)
     private val items = mutableListOf<Product>()
 
     fun addProduct(product: Product, quantity: Int) {
-        if(quantity < 0) {
+        if (quantity < 0) {
             throw IllegalArgumentException("Quantity can't be negative")
         }
-        if(isValidProduct(product)) {
+        if (isValidProduct(product)) {
             repeat(quantity) {
                 items.add(product)
             }
