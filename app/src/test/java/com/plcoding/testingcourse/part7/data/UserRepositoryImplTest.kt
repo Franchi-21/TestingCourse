@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class UserRepositoryImplTest {
-
     private lateinit var repository: UserRepositoryImpl
     private lateinit var api: UserApiFake
 

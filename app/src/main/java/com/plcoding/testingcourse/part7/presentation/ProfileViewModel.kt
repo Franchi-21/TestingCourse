@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class ProfileViewModel(
     private val repository: UserRepository,
     savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
 
     private val userId = savedStateHandle.get<String>("userId")
 
@@ -26,11 +26,13 @@ class ProfileViewModel(
 
                 val result = repository.getProfile(id)
 
-                _state.update { it.copy(
-                    profile = result.getOrNull(),
-                    errorMessage = result.exceptionOrNull()?.message,
-                    isLoading = false
-                ) }
+                _state.update {
+                    it.copy(
+                        profile = result.getOrNull(),
+                        errorMessage = result.exceptionOrNull()?.message,
+                        isLoading = false
+                    )
+                }
             }
         }
     }

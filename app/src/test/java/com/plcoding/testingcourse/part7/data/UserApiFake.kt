@@ -5,7 +5,6 @@ import com.plcoding.testingcourse.part7.domain.User
 import io.mockk.InternalPlatformDsl.toStr
 
 class UserApiFake: UserApi {
-
     var users = (1..10).map {
         User(
             id = it.toString(),
