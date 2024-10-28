@@ -9,10 +9,10 @@ class OrderService(
     private val emailClient: EmailClient
 ) {
     fun placeOrder(customerEmail: String, productName: String) {
-        if(auth.currentUser?.isAnonymous == false) {
+        if (auth.currentUser?.isAnonymous == false) {
             val email = Email(
                 subject = "Order Confirmation",
-                content ="Thank you for your order of $productName.",
+                content = "Thank you for your order of $productName.",
                 recipient = customerEmail
             )
             emailClient.send(email)

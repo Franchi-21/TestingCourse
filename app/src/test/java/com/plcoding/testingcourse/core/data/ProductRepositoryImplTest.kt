@@ -4,21 +4,16 @@ import assertk.assertThat
 import assertk.assertions.isTrue
 import com.plcoding.testingcourse.core.domain.AnalyticsLogger
 import com.plcoding.testingcourse.core.domain.LogParam
-import com.plcoding.testingcourse.core.domain.Product
-import com.plcoding.testingcourse.core.domain.ProductRepository
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkConstructor
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.HttpException
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -47,7 +42,7 @@ internal class ProductRepositoryImplTest {
     @Test
     fun `Response error, exception logged - MockWebServer`() = runBlocking {
         mockWebServer.enqueue(
-            MockResponse().setResponseCode(404)
+            MockResponse().setResponseCode(400)
         )
 
         val result = repository.purchaseProducts(listOf())

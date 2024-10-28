@@ -9,10 +9,10 @@ class ShoppingCart(
     private val items = cache.loadCart().toMutableList()
 
     fun addProduct(product: Product, quantity: Int) {
-        if(quantity < 0) {
+        if (quantity < 0) {
             throw IllegalArgumentException("Quantity can't be negative")
         }
-        if(isValidProduct(product)) {
+        if (isValidProduct(product)) {
             repeat(quantity) {
                 items.add(product)
             }
